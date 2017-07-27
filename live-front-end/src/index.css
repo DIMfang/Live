@@ -1,0 +1,16 @@
+.videoPanel {
+  margin: 0 auto;
+  padding: 0;
+  font-family: sans-serif;
+  width: 50%;
+  height: auto;
+}
+
+.chat-Panel {
+  margin: 0 auto;
+  padding: 0;
+  font-family: sans-serif;
+  width: 50%;
+  height: auto;
+  display: inline;
+}

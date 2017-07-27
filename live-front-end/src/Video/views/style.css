@@ -1,0 +1,39 @@
+.player-container{
+    width:100%;
+    position:relative;
+    padding-bottom:56.25%;    /*需要用padding来维持16:9比例,也就是9除以16*/
+}
+.player-container .video-js{
+    object-fit:fill;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.video-js .vjs-tech {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit; }
+
+.subscribe {
+  position: relative;
+  object-fit: fill;
+  width: 100%;
+}
+
+.subscribe .url-to-subscribe {
+  position: relative;
+  object-fit: fill;
+  width: 85%;
+}
+
+.subscribe .subscribe-button {
+  position: relative;
+  object-fit: fill;
+  width: 10%;
+}
