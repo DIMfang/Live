@@ -33,7 +33,7 @@ public class LiveController {
     @SendTo("/chatting/chat")
     @CrossOrigin
 	public String sendMessage(String message) {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
 		String date = df.format(new Date());
 		return "[" + date + "]:" + message;
 	}

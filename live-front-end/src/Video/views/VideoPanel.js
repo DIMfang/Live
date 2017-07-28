@@ -8,7 +8,7 @@ import './style.css';
 export default() => {
 
   return (
-    <div className="videoPanel">
+    <div>
       <VideoPlayer />
       <Subscribe />
     </div>

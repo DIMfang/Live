@@ -5,6 +5,12 @@ import WSClient from '../../WebSocket/WSClient.js';
 
 import {send} from '../actions.js';
 
+import {FormGroup} from 'react-bootstrap';
+import {InputGroup} from 'react-bootstrap';
+import {FormControl} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
+
 class SendMsg extends Component {
   constructor(props, context) {
     super(props, context);
@@ -50,10 +56,17 @@ class SendMsg extends Component {
     return (
       <div className="sendmsg">
         <form onSubmit={this.onSubmit}>
-          <input className="msg-to-send" type="text" onChange={this.onChange} value={this.state.text} />
-          <button className="send-button" type="submit">
-            Send
-          </button>
+          <FormGroup>
+            <InputGroup>
+              <InputGroup.Addon>
+                <Glyphicon glyph="pencil" />
+              </InputGroup.Addon>
+              <FormControl type="text" onChange={this.onChange} value={this.state.text} />
+              <InputGroup.Button>
+                <Button bsStyle="info" type="submit">Send</Button>
+              </InputGroup.Button>
+            </InputGroup>
+          </FormGroup>
         </form>
       </div>
     )

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import {ListGroupItem} from 'react-bootstrap';
+
 const Message = ({text}) => {
     return (
-      <li className="message-item">
-        <label className="text">{text}</label>
-      </li>
+      <ListGroupItem className="list-Group-Item">
+        {text}
+      </ListGroupItem>
     )
 };
 

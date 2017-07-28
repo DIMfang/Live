@@ -7,6 +7,7 @@ import {FormGroup} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 
 class Subscribe extends Component {
 
@@ -44,7 +45,7 @@ class Subscribe extends Component {
             <InputGroup>
               <FormControl type="text" onChange={this.onChange} value={this.state.liveUrl} />
               <InputGroup.Button>
-                <Button type="submit">Subscribe</Button>
+                <Button bsStyle="primary" type="submit"><Glyphicon glyph="play" />  Subscribe</Button>
               </InputGroup.Button>
             </InputGroup>
           </FormGroup>

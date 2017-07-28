@@ -6,6 +6,10 @@ import SendMsg from './SendMsg.js';
 
 import {receive} from '../actions.js';
 
+import {Panel} from 'react-bootstrap';
+import {ListGroup} from 'react-bootstrap';
+import {Label} from 'react-bootstrap';
+import {ListGroupItem} from 'react-bootstrap';
 
 class ChatPanel extends Component {
 
@@ -14,8 +18,9 @@ class ChatPanel extends Component {
   }
   render() {
     return (
-      <div className="chat-Panel">
-        <ul className="chat-list">
+      <div>
+        <ListGroup className="chat-Panel">
+          <ListGroupItem bsStyle="info">Let's talk</ListGroupItem>
           {
             this.props.messages.map((item) => (
               <Message
@@ -23,7 +28,8 @@ class ChatPanel extends Component {
               />
             ))
           }
-        </ul>
+        </ListGroup>
+
         <SendMsg />
       </div>
     )
