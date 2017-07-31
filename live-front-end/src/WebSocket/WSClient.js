@@ -1,7 +1,3 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
@@ -21,12 +17,6 @@ export default class WSClient {
   connect() {
     this.socket = new SockJS('http://localhost:8080/liveroom');
     this.stompClient = Stomp.over(this.socket);
-
-    const headers = {
-      login: 'guest',
-      passcode: 'guest',
-    };
-
     this.stompClient.connect('guest','guest', this.onConnected, this.onError);
   }
 

@@ -4,18 +4,11 @@ import PropTypes from 'prop-types';
 import Message from './Message.js';
 import SendMsg from './SendMsg.js';
 
-import {receive} from '../actions.js';
-
-import {Panel} from 'react-bootstrap';
 import {ListGroup} from 'react-bootstrap';
-import {Label} from 'react-bootstrap';
 import {ListGroupItem} from 'react-bootstrap';
 
 class ChatPanel extends Component {
 
-  constructor(props, context) {
-    super(props, context);
-  }
   render() {
     return (
       <div>

@@ -23,6 +23,6 @@ const storeEnhancers = compose(
   (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
 );
 
-const store = createStore(reducer,{liveUrl: 'rtmp://live.hkstv.hk.lxdns.com/live/hks', messages:[]},storeEnhancers);
+const store = createStore(reducer,{liveUrl: ' rtmp://', messages:[]},storeEnhancers);
 
 export default store;

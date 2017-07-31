@@ -3,6 +3,20 @@ package com.teradyne.adc.live.Model;
 public class Message {
 
 	private String message;
+	private String time;
+	
+	public Message(String message, String time) {
+		this.message = message;
+		this.time = time;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public String getMessage() {
 		return message;

@@ -6,10 +6,6 @@ import VTTJS_PATH from 'videojs-vtt.js/dist/vtt.min.js';
 
 class VideoPlayer extends Component {
 
-  constructor(props,context) {
-    super(props, context);
-  }
-
   componentDidMount() {
 
     videojs.options.flash.swf = SWF_PATH;

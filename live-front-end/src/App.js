@@ -9,7 +9,7 @@ import {Clearfix} from 'react-bootstrap';
 
 function LiveApp() {
   return (
-    <Grid fluid="true" >
+    <Grid fluid='true' >
       <Row className="show-grid">
         <Col sm={7} md={7} xsOffset={1} >
           <VideoPanel />
