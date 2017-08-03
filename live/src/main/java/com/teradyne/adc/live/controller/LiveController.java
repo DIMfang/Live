@@ -58,6 +58,7 @@ public class LiveController {
 		return newMsg;
 	}
     @RequestMapping(value="/chat/{roomID}/history")
+    @CrossOrigin
     public List<Message> getMessages(@PathVariable String roomID) {
     	return cacheDao.getMessages(roomID);
     }

@@ -1,4 +1,5 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import {reducer as videoReducer} from './Video';
 import {reducer as chatReducer} from './Chat';
 
@@ -12,7 +13,7 @@ const reducer = combineReducers({
   messages: chatReducer
 });
 
-const middlewares = [];
+const middlewares = [thunkMiddleware];
 if (process.env.NODE_ENV !== 'production') {
   middlewares.push(require('redux-immutable-state-invariant')());
 }
@@ -22,6 +23,6 @@ const storeEnhancers = compose(
   (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
 );
 
-const store = createStore(reducer,{liveUrl: {liveUrl:' rtmp://localhost/live/',roomID:1}, messages:[]},storeEnhancers);
+const store = createStore(reducer,{liveUrl: {liveUrl:' rtmp://localhost/live/',roomID:"1"}, messages:[]},storeEnhancers);
 
 export default store;

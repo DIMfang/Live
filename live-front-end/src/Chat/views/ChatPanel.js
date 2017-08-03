@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Message from './Message.js';
 import SendMsg from './SendMsg.js';
-
+import {FETCHING,FAILURE} from '../status.js';
 import {ListGroup} from 'react-bootstrap';
 import {ListGroupItem} from 'react-bootstrap';
 
@@ -15,12 +15,20 @@ class ChatPanel extends Component {
         <ListGroup className="chat-Panel">
           <ListGroupItem bsStyle="info">Let's talk</ListGroupItem>
           {
-            this.props.messages.map((item) => (
-              <Message
-                id={item.text.id}
-                text={item.text}
-              />
-            ))
+            this.props.messages.map((item) => {
+              if(item.text === FETCHING || item.text === FAILURE) {
+                return (
+                  <ListGroupItem className="list-Group-Item" bsStyle="info">{item.text}</ListGroupItem>
+                )
+              }
+              return (
+                <Message
+                  id={item.id}
+                  text={item.text}
+                  time={item.time}
+                />
+              )
+            })
           }
         </ListGroup>
 

@@ -5,17 +5,17 @@ import {ListGroupItem} from 'react-bootstrap';
 import {Label} from 'react-bootstrap';
 
 
-const Message = ({text}) => {
-    let obj = JSON.parse(text);
+const Message = ({text,time}) => {
     return (
       <ListGroupItem className="list-Group-Item">
-        <p><Label bsStyle="info">{obj.time}</Label> {obj.message}</p>
+        <p><Label bsStyle="info">{time}</Label> {text}</p>
       </ListGroupItem>
     )
 };
 
 Message.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired
 }
 
 export default Message;

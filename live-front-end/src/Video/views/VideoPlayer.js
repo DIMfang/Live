@@ -27,10 +27,6 @@ class VideoPlayer extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this.player.src(this.props.liveUrl);
-  }
-
   // destroy player on unmount
   componentWillUnmount() {
     if (this.player) {

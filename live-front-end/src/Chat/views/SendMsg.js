@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import WSClient from '../../WebSocket/WSClient.js';
 
-import {send} from '../actions.js';
+import {send,fetchChatHistory} from '../actions.js';
 
 import {FormGroup} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
@@ -24,12 +24,14 @@ class SendMsg extends Component {
   }
 
   componentDidMount() {
+    this.props.onChangeRoom(this.props.id);
     this.wsclient = new WSClient(this.props.url, this.props.id, this.pushMessage);
     this.wsclient.connect();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if(nextProps.id !== this.props.id) {
+      this.props.onChangeRoom(nextProps.id);
       this.wsclient.changeSubscribe(nextProps.id);
     }
     return true;
@@ -94,6 +96,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSendMsg: (text,roomID) => {
       dispatch(send(text,roomID));
+    },
+    onChangeRoom: (roomID) => {
+      dispatch(fetchChatHistory(roomID));
     }
   }
 };
