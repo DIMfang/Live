@@ -17,6 +17,7 @@ class ChatPanel extends Component {
           {
             this.props.messages.map((item) => (
               <Message
+                id={item.text.id}
                 text={item.text}
               />
             ))

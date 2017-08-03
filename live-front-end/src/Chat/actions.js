@@ -1,6 +1,7 @@
 import {SEND_MESSAGE} from './actionTypes.js';
 
-export const send = (message) => ({
+export const send = (message,roomID) => ({
   type: SEND_MESSAGE,
-  message
+  message,
+  roomID
 });

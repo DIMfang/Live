@@ -25,11 +25,13 @@ class Subscribe extends Component {
   onSubmit(ev) {
     ev.preventDefault();
 
-    const url = this.state.liveUrl;
-    if(!url.trim()) {
+    const url = this.state.liveUrl.substring(0,this.state.liveUrl.lastIndexOf("/")+1);
+    const id = this.state.liveUrl.substring(this.state.liveUrl.lastIndexOf("/")+1);
+    if(!url.trim() || !id.trim()) {
       return;
     }
-    this.props.onChangeUrl(url);
+
+    this.props.onChangeUrl(url,id);
   }
 
   onChange(event) {
@@ -56,14 +58,14 @@ class Subscribe extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    liveUrl: state.liveUrl
+    liveUrl: state.liveUrl.liveUrl + state.liveUrl.roomID
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onChangeUrl: (url) => {
-      dispatch(subscribe(url));
+    onChangeUrl: (url,roomID) => {
+      dispatch(subscribe(url,roomID));
     }
   }
 }

@@ -1,5 +1,4 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
-
 import {reducer as videoReducer} from './Video';
 import {reducer as chatReducer} from './Chat';
 
@@ -23,6 +22,6 @@ const storeEnhancers = compose(
   (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
 );
 
-const store = createStore(reducer,{liveUrl: ' rtmp://', messages:[]},storeEnhancers);
+const store = createStore(reducer,{liveUrl: {liveUrl:' rtmp://localhost/live/',roomID:1}, messages:[]},storeEnhancers);
 
 export default store;

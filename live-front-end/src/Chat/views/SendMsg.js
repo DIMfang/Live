@@ -24,9 +24,15 @@ class SendMsg extends Component {
   }
 
   componentDidMount() {
-
-    this.wsclient = new WSClient(this.props.url,this.pushMessage);
+    this.wsclient = new WSClient(this.props.url, this.props.id, this.pushMessage);
     this.wsclient.connect();
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.id !== this.props.id) {
+      this.wsclient.changeSubscribe(nextProps.id);
+    }
+    return true;
   }
 
   // destroy player on unmount
@@ -49,7 +55,7 @@ class SendMsg extends Component {
   }
 
   pushMessage(newMessage) {
-    this.props.onSendMsg(newMessage.body);
+    this.props.onSendMsg(newMessage.body,this.props.id);
   }
 
   render() {
@@ -79,14 +85,15 @@ SendMsg.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    url: '/chatting/chat'
+    url: '/chatting/chat/',
+    id: state.liveUrl.roomID
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSendMsg: (text) => {
-      dispatch(send(text));
+    onSendMsg: (text,roomID) => {
+      dispatch(send(text,roomID));
     }
   }
 };

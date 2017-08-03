@@ -5,10 +5,12 @@ export default class WSClient {
 
   socket;
   stompClient;
+  subscription;
 
-  constructor(url, receive) {
+  constructor(url, roomID, receive) {
     this.url = url;
     this.receive = receive;
+    this.roomID = roomID;
 
     this.onConnected = this.onConnected.bind(this);
     this.connect = this.connect.bind(this);
@@ -22,7 +24,16 @@ export default class WSClient {
 
   onConnected(frame) {
     console.log('Connected: ' + frame);
-    this.stompClient.subscribe(this.url, this.receive);
+    this.subscription = this.stompClient.subscribe(this.url + this.roomID, this.receive);
+  }
+
+  changeSubscribe(newID) {
+    console.log('Change from room ID:' + this.roomID + ' to ' + newID);
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+      this.roomID = newID;
+      this.subscription = this.stompClient.subscribe(this.url + this.roomID, this.receive);
+    }
   }
 
   onError(error) {
@@ -31,7 +42,7 @@ export default class WSClient {
 
   send(message) {
     if(this.stompClient) {
-      this.stompClient.send("/app/chat",{},message);
+      this.stompClient.send("/app/chat/" + this.roomID,{},message);
     }
   }
 

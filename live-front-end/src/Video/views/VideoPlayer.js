@@ -60,7 +60,7 @@ class VideoPlayer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    liveUrl: state.liveUrl
+    liveUrl: state.liveUrl.liveUrl + state.liveUrl.roomID
   }
 }
 
